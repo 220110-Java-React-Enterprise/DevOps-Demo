@@ -17,8 +17,19 @@ phases:
   post_build:
     commands:
       - echo ================== POST BUILD ==================
+      - pwd
+      - echo working directory contents...
       - ls -al
-      - mv target/devops-demo-0.1.war devops-demo-0.1.war
+      - echo target folder contents...
+      - ls -al target/
+      - mkdir artifact
+      - touch artifact/ROOT.war
+      - mv target/devops-demo-0.1.war artifact/devops-demo.war
+      - zip -r warBundle.zip artifact
+      - echo list files...
+      - ls -al
+      - echo list artifact/...
+      - ls -al artifact/
 artifacts:
   files:
-    - devops-demo-0.1.war
+    - warBundle.zip
