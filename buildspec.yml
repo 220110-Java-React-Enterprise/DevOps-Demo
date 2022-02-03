@@ -23,7 +23,7 @@ phases:
       - echo target folder contents...
       - ls -al target/
       - mv target/devops-demo-0.1.war devops-demo.war
-      - devops-demo.war
+      - unzip devops-demo.war
 #      - mkdir artifact
 #      - touch artifact/ROOT.war
 #      - mv target/devops-demo-0.1.war artifact/devops-demo.war
