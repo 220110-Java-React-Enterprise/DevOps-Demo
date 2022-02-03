@@ -1,41 +1,14 @@
 version: 0.2
 
-#  <groupId>com.revature</groupId>
-#  <artifactId>ToDoTwo</artifactId>
-#  <version>0.1</version>
-#  <packaging>war</packaging>
-
 phases:
   install:
     runtime-versions:
-      java: corretto8
-
-  build:
-    commands:
-      - echo ================== START BUILD ==================
-      - mvn package -DskipTests
+      java: corretto11
   post_build:
     commands:
-      - echo ================== POST BUILD ==================
-      - pwd
-      - echo working directory contents...
-      - ls -al
-      - echo target folder contents...
-      - ls -al target/
-      - mv target/devops-demo-0.1.war devops-demo.war
-      - unzip devops-demo.war
-#      - mkdir artifact
-#      - touch artifact/ROOT.war
-#      - mv target/devops-demo-0.1.war artifact/devops-demo.war
-#      - zip -r warBundle.zip artifact
-#      - echo list files...
-#      - ls -al
-#      - echo list artifact/...
-#      - ls -al artifact/
+      - mvn package
+      - mv target/devops-demo-0.1.war ROOT.war
 artifacts:
   files:
-    META-INF/**
-    WEB-INF/**
-
-
-#    - warBundle.zip
+    - ROOT.war
+    - .ebextensions/**/*
