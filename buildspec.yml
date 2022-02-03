@@ -1,0 +1,11 @@
+phases:
+  install:
+    runtime-versions:
+      java: corretto8
+  post_build:
+    commands:
+      - mvn package -DskipTests
+      - mv target/devops-demo-0.1.war devops-demo-0.1.war
+artifacts:
+  files:
+    - devops-demo-0.1.war
