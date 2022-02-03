@@ -9,9 +9,15 @@ phases:
   install:
     runtime-versions:
       java: corretto8
+
+  build:
+    commands:
+      - echo ================== START BUILD ==================
+      - mvn package -DskipTests
   post_build:
     commands:
-      - mvn package -DskipTests
+      - echo ================== POST BUILD ==================
+      - ls -al
       - mv target/devops-demo-0.1.war devops-demo-0.1.war
 artifacts:
   files:
