@@ -17,11 +17,11 @@ public class SuperServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //Fact finding:
-        System.out.println("Req URI: " + req.getRequestURI());
-        System.out.println("Query String: " + req.getQueryString());
-        System.out.println("Context Path: " + req.getContextPath());
-        System.out.println("Path Info: " + req.getPathInfo());
-        System.out.println("Content Type: " + req.getContentType());
+//        System.out.println("Req URI: " + req.getRequestURI());
+//        System.out.println("Query String: " + req.getQueryString());
+//        System.out.println("Context Path: " + req.getContextPath());
+//        System.out.println("Path Info: " + req.getPathInfo());
+//        System.out.println("Content Type: " + req.getContentType());
 
 
 
@@ -38,7 +38,7 @@ public class SuperServlet extends HttpServlet {
          */
         Map<String, String[]> parameterMap = req.getParameterMap();
         Set<String> keySet = parameterMap.keySet();
-        System.out.println("Query Parameters: ");
+//        System.out.println("Query Parameters: ");
         for (String key:keySet) {
             System.out.print("[" + key + "]: ");
             String[] strArray = parameterMap.get(key);
