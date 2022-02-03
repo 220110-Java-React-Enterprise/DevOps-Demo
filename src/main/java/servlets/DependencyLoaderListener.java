@@ -8,6 +8,7 @@ public class DependencyLoaderListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         //System.out.println("Servlet Container contextInitialized method...");
+        //removed because maybe souts break tomcat???
     }
 
     @Override
