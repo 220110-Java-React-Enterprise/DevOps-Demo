@@ -4,7 +4,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.Properties;
 
 public class PingServlet extends HttpServlet {
     /*
@@ -12,7 +14,17 @@ public class PingServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setStatus(202);
-        resp.getWriter().print("Pong!");
+        try(FileReader jdbcFile = new FileReader("src/main/resources/jdbc.properties")) {
+            Properties props = new Properties();
+            props.load(jdbcFile);
+            resp.setStatus(202);
+            resp.getWriter().write(props.getProperty("hostname"));
+        } catch (IOException e) {
+            resp.setStatus(500);
+            resp.getWriter().print("IOException: " + e.getMessage());
+        }
+
+//        resp.setStatus(202);
+//        resp.getWriter().print("Pong!");
     }
 }
