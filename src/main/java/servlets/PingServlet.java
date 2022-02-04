@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class PingServlet extends HttpServlet {
@@ -14,9 +15,11 @@ public class PingServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try(FileReader jdbcFile = new FileReader("jdbc.properties")) {
+        try() {
+            ClassLoader loader = Thread.currentThread().getContextClassLoader();
             Properties props = new Properties();
-            props.load(jdbcFile);
+            InputStream input = loader.getResourceAsStream("jdbc.properties")
+            props.load(input);
             resp.setStatus(202);
             resp.getWriter().write(props.getProperty("hostname"));
         } catch (IOException e) {
