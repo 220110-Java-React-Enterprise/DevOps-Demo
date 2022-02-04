@@ -4,9 +4,18 @@ phases:
   install:
     runtime-versions:
       java: corretto11
-  post_build:
+  pre_build:
+    commands:
+      - echo ======================================== PRE BUILD ========================================
+      - pwd
+      - ls -al
+      - ls -al ./src/main/resources/
+      - aws s3 cp s3://kylebucketrevature/jdbc.properties ./src/main/resources/jdbc.properties
+  build:
     commands:
       - mvn package
+  post_build:
+    commands:
       - mv target/devops-demo-0.1.war ROOT.war
 artifacts:
   files:
