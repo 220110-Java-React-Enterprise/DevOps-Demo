@@ -15,10 +15,10 @@ public class PingServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try() {
+        try {
             ClassLoader loader = Thread.currentThread().getContextClassLoader();
             Properties props = new Properties();
-            InputStream input = loader.getResourceAsStream("jdbc.properties")
+            InputStream input = loader.getResourceAsStream("jdbc.properties");
             props.load(input);
             resp.setStatus(202);
             resp.getWriter().write(props.getProperty("hostname"));
