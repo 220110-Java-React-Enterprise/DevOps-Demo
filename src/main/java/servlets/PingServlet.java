@@ -14,7 +14,7 @@ public class PingServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        try(FileReader jdbcFile = new FileReader("src/main/resources/jdbc.properties")) {
+        try(FileReader jdbcFile = new FileReader("WEB-INF/classes/jdbc.properties")) {
             Properties props = new Properties();
             props.load(jdbcFile);
             resp.setStatus(202);
